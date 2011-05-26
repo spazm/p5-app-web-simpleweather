@@ -1,0 +1,4 @@
+[% USE Dumper %]
+<pre>
+[% Dumper.dump(f) %]
+</pre>
