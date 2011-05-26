@@ -1,4 +1,12 @@
-[% USE Dumper %]
-<pre>
-[% Dumper.dump(f) %]
-</pre>
+<center>
+<table>
+<tr>
+    <td><img src="http://google.com/[% f.icon %]" alt="[% f.condition %]"></td>
+    <td>
+        Current Conditions for [% f.location | html %]<br>
+        [% f.temp_f %]F and [% f.condition %] 
+    </td>
+</tr>
+</table>
+</center>
+<p>

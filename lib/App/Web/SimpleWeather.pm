@@ -6,20 +6,17 @@ use Weather::Google;
 
 set logger => 'console';
 
-my $gw = Weather::Google->new();
 
 get '/' => sub {
     return 'welcome to simple weather'
 };
 
 get '/:name_or_zip' => sub {
-    $gw->zip( params->{name_or_zip} );
+    my $gw = Weather::Google->new( params->{name_or_zip} );
     my $forecast = $gw->current();
     $forecast->{ location } = params->{name_or_zip};
 
-    #template 'weather' => { f => $forecast };
-    return to_dumper $forecast;
+    template 'weather' => { f => $forecast };
 };
 
-#Dancer::dance unless caller; #<-- doesn't work because AppDir gets confused
 1;
